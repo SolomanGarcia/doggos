@@ -5,5 +5,9 @@ fetch(BREEDS_URL)
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
+    const img = document.createElement("img");
+    img.src = data.message;
+    img.alt = "Cute doggo";
+
+    document.querySelector(".doggos").appendChild(img);
   });
