@@ -42,11 +42,11 @@ fetch(BREEDS_URL)
 
 select.addEventListener("change", function (event) {
   console.log(event.target.value);
+
+  let url = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
+
+  getDoggo(url);
 });
-
-let url = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
-
-getDoggo(url);
 
 const img = document.querySelector(".dog-img");
 
