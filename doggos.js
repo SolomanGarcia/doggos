@@ -21,6 +21,7 @@
 // document.querySelector(".add-doggo").addEventListener("click", addDoggo);
 
 const BREEDS_URL = "https://dog.ceo/api/breeds/list/all";
+const select = document.querySelector(".breeds");
 
 fetch(BREEDS_URL)
   .then((response) => {
@@ -31,8 +32,6 @@ fetch(BREEDS_URL)
     const breedsObject = data.message;
     const breedsArray = Object.keys(breedsObject);
 
-    const select = document.querySelector(".breeds");
-
     for (let i = 0; i < breedsArray.length; i++) {
       const option = document.createElement("option");
       option.value = breedsArray[i];
@@ -40,3 +39,23 @@ fetch(BREEDS_URL)
       select.appendChild(option);
     }
   });
+
+select.addEventListener("change", function (event) {
+  console.log(event.target.value);
+});
+
+let url = `https://dog.ceo/api/breed/${event.target.value}/images/random`;
+
+getDoggo(url);
+
+const img = document.querySelector(".dog-img");
+
+function getDoggo(url) {
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      img.src = data.message;
+    });
+}
