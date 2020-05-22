@@ -13,3 +13,5 @@ function addDoggo() {
       document.querySelector(".doggos").appendChild(img);
     });
 }
+
+document.querySelector(".add-doggo").addEventListener("click", addDoggo);
