@@ -60,7 +60,12 @@ function getDoggo(url) {
     })
     .then(function (data) {
       img.src = data.message;
-      spinner.classList.remove("show");
-      img.classList.add("show");
+      // spinner.classList.remove("show");
+      // img.classList.add("show");
     });
 }
+
+img.addEventListener("load", function () {
+  spinner.classList.remove("show");
+  img.classList.add("show");
+});
